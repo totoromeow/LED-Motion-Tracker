@@ -2,7 +2,8 @@
 // file name: main.c                       //
 // description: ADC -> LED Motion Tracker  //
 // author: Anqi Chen                       //
-// language: avr109                        //
+// language: C                             //
+// Programmer: avr109                      //
 // device: ATmega32u4                      //
 // compiler: gcc                           //
 //*****************************************//
