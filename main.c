@@ -64,8 +64,55 @@ int main(void)
             {
                 PORT_OFF(PORTD,1);
             }
-            
+        
+        ADMUX = (1<<REFS0)|(1<<ADLAR)|(1<<MUX1); //C2
+
+                ADCSRA |= (1<<ADSC);
+        //wait until conversion completes; ADSC = 0 means complete
+        while (ADCSRA & (1<<ADSC));
+            adc_value3 = ADCH; //store ADC result
+             if (adc_value3 >55)
+             {
+                PORT_ON(PORTD,2);
+            }
+            else
+            {
+                PORT_OFF(PORTD,2);
+            }            
+ 
+         ADMUX = (1<<REFS0)|(1<<ADLAR)|(1<<MUX1)|(1<<MUX0); //C3
+
+                ADCSRA |= (1<<ADSC);
+        //wait until conversion completes; ADSC = 0 means complete
+        while (ADCSRA & (1<<ADSC));
+            adc_value4 = ADCH; //store ADC result
+             if (adc_value4 >55)
+             {
+                PORT_ON(PORTD,3);
+            }
+            else
+            {
+                PORT_OFF(PORTD,3);
+            }
+ 
+         ADMUX = (1<<REFS0)|(1<<ADLAR)|(1<<MUX3); //C4
+
+                ADCSRA |= (1<<ADSC);
+        //wait until conversion completes; ADSC = 0 means complete
+        while (ADCSRA & (1<<ADSC));
+            adc_value5 = ADCH; //store ADC result
+             if (adc_value5 >55)
+             {
+                PORT_ON(PORTD,4);
+            }
+            else
+            {
+                PORT_OFF(PORTD,4);
+            }
+    
+    
     }
+
 }
 
          
