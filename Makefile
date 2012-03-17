@@ -12,7 +12,7 @@
 # FUSES ........ Parameters for avrdude to flash the fuses appropriately.
 
 DEVICE     = atmega168
-CLOCK      = 8000000
+CLOCK      = 20000000
 PROGRAMMER = -c avrispmkII -P usb
 OBJECTS    = main.o
 FUSES      = -U hfuse:w:0xdf:m -U lfuse:w:0x62:m   

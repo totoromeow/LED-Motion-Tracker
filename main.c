@@ -8,7 +8,7 @@
 // compiler: gcc                           //
 //*****************************************// 
 #include <avr/io.h>
-#include <stdbool.h>
+
 #define PORT_ON(port,pin) port|=(1 << pin)
 #define PORT_OFF(port,pin) port &= ~(1 << pin) 
 
