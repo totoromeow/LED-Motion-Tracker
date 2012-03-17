@@ -11,11 +11,11 @@
 #                is connected.
 # FUSES ........ Parameters for avrdude to flash the fuses appropriately.
 
-DEVICE     = atmega32u4
+DEVICE     = atmega168
 CLOCK      = 8000000
-PROGRAMMER = -c avr109 -P /dev/tty.usbmodemfd121
+PROGRAMMER = -c avrispmkII -P usb
 OBJECTS    = main.o
-FUSES      = -U hfuse:w:0x99:m -U lfuse:w:0x41:m
+FUSES      = -U hfuse:w:0xdf:m -U lfuse:w:0x62:m   
 
 
 # Tune the lines below only if you know what you are doing:
@@ -50,7 +50,7 @@ install: flash fuse
 
 # if you use a bootloader, change the command below appropriately:
 load: all
-	bootloadHID main.hex
+	BootloaderCDC.hex
 
 clean:
 	rm -f main.hex main.elf $(OBJECTS)
