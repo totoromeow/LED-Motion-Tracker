@@ -13,8 +13,8 @@
 
 DEVICE     = atmega168
 CLOCK      = 20000000
-PROGRAMMER = -c avrispmkII -P usb
-OBJECTS    = main.o
+PROGRAMMER = -c avrispv2 -P /dev/tty.usbmodem00013431
+OBJECTS    = ADC.o
 FUSES      = -U hfuse:w:0xdf:m -U lfuse:w:0x62:m   
 
 

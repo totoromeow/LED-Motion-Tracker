@@ -22,31 +22,32 @@ int main(void)
  
 
     DDRD = 0xff; //set PORTD for LED output
-    PORTD = 0x00; // out put low - pull up resistance
+    PORTD = 0x00; // output low - pull up resistance
     
-    DDRB = 0xff;
-    PORTB = 0x00;
+    DDRB = 0xff; //set PORTB for LED output 
+    PORTB = 0x00; // output low - pull up resistance
 
-    DDRC = 0x00; //set PORTF for analog input
-    PORTC = 0x00;
+    DDRC = 0x00; //set PORTC for analog input
+    PORTC = 0x00; 
 
 
 
     //set up analog convertor
-    ADCSRA =(1<<ADEN)|(1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2);
+    ADCSRA |=(1<<ADEN)|(1<<ADPS2)|(1<<ADPS0)|(1<<ADPS1);
     // left ajusted - only read in 8 bits
+    ADMUX |= (1<<REFS0)|(1<<ADLAR);
 
     // interatively checking ADC output and turn on corresponding LEDs
     for(;;)
     {
-    
-        ADMUX = (1<<REFS0)|(1<<ADLAR);//C0
+        
+        ADMUX = 0xC0; //C0
 
-                ADCSRA |= (1<<ADSC);
+        ADCSRA |= (1<<ADSC);
         //wait until conversion completes; ADSC = 0 means complete
         while (ADCSRA & (1<<ADSC));
-            adc_value2 = ADCH; //store ADC result
-             if (adc_value2 >55)
+            adc_value1 = ADCH; //store ADC result
+             if (adc_value1 >55)
              {
                 PORT_ON(PORTD,0);
                 PORT_ON(PORTD,1);
@@ -122,7 +123,7 @@ int main(void)
             }
             else
             {
-                PORT_OFF(PORTD,4);
+                PORT_OFF(PORTD,7);
                 PORT_OFF(PORTB,0);
             }
     
